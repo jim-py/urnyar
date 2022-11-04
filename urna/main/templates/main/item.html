@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+
+{% block content_acdp %}{% endblock %}
+
+{% block content %}
+
+<section class="catalog" id="catalog">
+    <div class="container">
+        <div class="catalog-wrap">
+            <div class="tovar-split">
+
+                <div class="catalog-ul">
+                    <h3 class="cat__title">
+                        Урны
+                    </h3>
+                    <ul class="catalog-cat">
+                        {% for category in categories %}
+                        <li class="cat__item">
+                            <a class="cat__a" href="{% url 'category_urn' category.pk %}">{{ category.name }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <h3 class="cat__title">Лавки</h3>
+                    <ul class="catalog-cat">
+                        <li class="cat__item">
+                            <a class="cat__a" href="">Все</a>
+                        </li>
+                    </ul>
+                    <h3 class="cat__title">Ортопедические основания</h3>
+                    <ul class="catalog-cat">
+                        <li class="cat__item">
+                            <a class="cat__a" href="">Эконом</a>
+                        </li>
+                        <li class="cat__item">
+                            <a class="cat__a" href="">Стандарт</a>
+                        </li>
+                        <li class="cat__item">
+                            <a class="cat__a" href="">Усиленные</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tovar-wrap">
+                    <h3 class="tovar-title"> Урна кованная </h3>
+                    <span class="tovar-line"></span>
+                    <div class="tovar-item-split">
+                        <div class="tovar-desc">
+                            <div class="tovar-item">
+                                <div class="tovar-tables">
+                                    <table class="iksweb">
+                                        <thead>
+                                        <tr>
+                                            <th colspan="4" style="text-align: center">Наименование</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>Обьем</td>
+                                            <td>{{ urn.volume1 }}</td>
+                                            <td>{{ urn.volume2 }}</td>
+                                            <td>{{ urn.volume3 }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Металл</td>
+                                            <td>{{ urn.material1 }}</td>
+                                            <td>{{ urn.material2 }}</td>
+                                            <td>{{ urn.material3 }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Габариты</td>
+                                            <td>{{ urn.size1 }}</td>
+                                            <td>{{ urn.size2 }}</td>
+                                            <td>{{ urn.size3 }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Вес</td>
+                                            <td>{{ urn.weight1 }}</td>
+                                            <td>{{ urn.weight2 }}</td>
+                                            <td>{{ urn.weight3 }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Коробка</td>
+                                            <td>{{ urn.box1 }}</td>
+                                            <td>{{ urn.box2 }}</td>
+                                            <td>{{ urn.box3 }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="4" style="text-align: center">Цена</th>
+                                        </tr>
+                                        <tr>
+                                            <td>От 1 шт.</td>
+                                            <td>{{ urn.cost1_1 }}</td>
+                                            <td>{{ urn.cost1_2 }}</td>
+                                            <td>{{ urn.cost1_3 }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>От 100 шт.</td>
+                                            <td>{{ urn.cost100_1 }}</td>
+                                            <td>{{ urn.cost100_2 }}</td>
+                                            <td>{{ urn.cost100_3 }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>От 200 шт.</td>
+                                            <td>{{ urn.cost200_1 }}</td>
+                                            <td>{{ urn.cost200_2 }}</td>
+                                            <td>{{ urn.cost200_3 }}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tovar-text">
+                                <ul>
+                                    <li class="tovar-elem">
+                                        <p><b>Материал: </b>{{ urn.material_text }}</P>
+                                    </li>
+                                    <li class="tovar-elem">
+                                        <p><b>Цвета: </b>{{ urn.color_text }}</P>
+                                    </li>
+                                    <li class="tovar-elem">
+                                        <p><b>Покрытие: </b>{{ urn.cover_text }}</P>
+                                    </li>
+                                    <li class="tovar-elem">
+                                        <p><b>Тип упаковки: </b>{{ urn.box_type_text }}</P>
+                                    </li>
+                                    <li class="tovar-elem">
+                                        <p><b>Наличие пепельницы: </b>{{ urn.tray_text }}</P>
+                                    </li>
+                                    <li class="tovar-elem">
+                                        <p><b>Доп Описание: </b>{{ urn.extra_text }}</P>
+                                    </li>
+                                    <div class="tovar-links">
+                                        <li class="tovar-elem">
+                                            <p>Способы оплаты смотреть <a class="tovar__a" href="">здесь</a></P>
+                                        </li>
+                                        <li class="tovar-elem">
+                                            <p>Способы доставки смотреть <a class="tovar__a" href="">здесь</a></P>
+                                        </li>
+                                        <li class="tovar-elem">
+                                            <p>Цена не включает стоимость доставки. Доставка рассчитывается
+                                                индивидуально менеджером предприятия.</P>
+                                        </li>
+                                    </div>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="tovar-imgs">
+                            <div class="main_img">
+                                <img src="{{ urn.photo_color1.url }}">
+                            </div>
+
+                            <div class="img_list">
+                                {% if item.main_photo %}
+                                <img class="catalog-img" src="{{ item.photo_color1.url }}" alt="">
+                                {% else %}
+                                <img class="catalog-img"
+                                     src="https://www.gidroabraziv.com/wp-content/uploads/2020/01/nophoto_1280x960_611.jpg"
+                                     alt="">
+                                {% endif %}
+                                {% if item.main_photo %}
+                                <img class="catalog-img" src="{{ item.photo_color2.url }}" alt="">
+                                {% else %}
+                                <img class="catalog-img"
+                                     src="https://www.gidroabraziv.com/wp-content/uploads/2020/01/nophoto_1280x960_611.jpg"
+                                     alt="">
+                                {% endif %}
+                                {% if item.main_photo %}
+                                <img class="catalog-img" src="{{ item.photo_color3.url }}" alt="">
+                                {% else %}
+                                <img class="catalog-img"
+                                     src="https://www.gidroabraziv.com/wp-content/uploads/2020/01/nophoto_1280x960_611.jpg"
+                                     alt="">
+                                {% endif %}
+                                {% if item.main_photo %}
+                                <img class="catalog-img" src="{{ item.photo_color4.url }}" alt="">
+                                {% else %}
+                                <img class="catalog-img"
+                                     src="https://www.gidroabraziv.com/wp-content/uploads/2020/01/nophoto_1280x960_611.jpg"
+                                     alt="">
+                                {% endif %}
+                                {% if item.main_photo %}
+                                <img class="catalog-img" src="{{ item.photo_color5.url }}" alt="">
+                                {% else %}
+                                <img class="catalog-img"
+                                     src="https://www.gidroabraziv.com/wp-content/uploads/2020/01/nophoto_1280x960_611.jpg"
+                                     alt="">
+                                {% endif %}
+                                {% if item.main_photo %}
+                                <img class="catalog-img" src="{{ item.photo_color6.url }}" alt="">
+                                {% else %}
+                                <img class="catalog-img"
+                                     src="https://www.gidroabraziv.com/wp-content/uploads/2020/01/nophoto_1280x960_611.jpg"
+                                     alt="">
+                                {% endif %}
+                            </div>
+                            <p>Цвет фотографии искажает монитор компьютера. Уточните цвет у менеджера или ориентируйтесь
+                                по таблице RAL</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

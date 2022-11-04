@@ -1,0 +1,132 @@
+.tovar-split {
+    display: flex;
+    justify-content: start;
+    margin-top: 60px;
+}
+
+.tovar-wrap {
+    width: 100%;
+    text-align-last: left;
+    margin-bottom: 100px;
+}
+
+.tovar-item {
+    display:flex;
+    font-display: column;
+}
+
+.tovar-line {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: rgb(211, 211, 211);
+    margin: 10px 0 20px;
+}
+
+.tovar-item-split {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tovar-desc {
+    width: 60%;
+}
+
+.tovar-tables {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.tovar-text ul {
+    list-style-type: none;
+}
+
+.tovar-elem {
+    margin-bottom: 10px;
+}
+
+.tovar-elem p {
+    text-align: justify;
+}
+
+.tovar-links {
+    margin-top: 40px;
+}
+
+.tovar__a {
+    text-decoration: underline; 
+    transition: all 0.1s ease; 
+ } .tovar__a:hover {
+     color: #A3CF98;
+     transform:scale(1.02);
+     text-decoration-line: underline;
+ }
+
+/* Стили таблицы (IKSWEB) */
+table.iksweb{margin-bottom: 20px; text-decoration: none;border-collapse:collapse;width:100%;text-align:center;}
+	table.iksweb th{font-weight:normal;font-size:14px; color:#ffffff;background-color:#a3cf98;}
+	table.iksweb td{font-size:13px;color:#354251;}
+	table.iksweb td,table.iksweb th{white-space:pre-wrap;padding:10px 20px;line-height:13px;vertical-align: middle;border: 1px solid rgb(211, 211, 211);;}	table.iksweb tr:hover{background-color:#f9fafb}
+	table.iksweb tr:hover td{color:#354251;cursor:default;}
+
+.tovar-imgs {
+    width: 36%;
+}
+
+.tovar-imgs p {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 14px;
+    border: 1px solid rgb(214, 99, 99);
+    color: rgb(214, 99, 99);
+}
+
+.img_list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap
+}
+
+.img_list:after {
+    content: '';
+    width: 32%;
+}
+
+.main_img img {
+  width: 100%;
+  margin-bottom: 3px;
+}
+
+.img_list img {
+  width: 32%;
+  margin-bottom: 7px;
+}
+
+@media (max-width: 900px) {
+    .tovar-wrap {
+        margin: 0 20px;
+    }
+
+    .tovar-split {
+        flex-direction: column;
+    }
+    .tovar-item-split {
+      flex-direction: column;
+    }
+
+    .tovar-desc {
+        width: 100%;
+    }
+
+    .tovar-imgs {
+        width: 100%;
+    }
+  }
+  @media (max-width: 440px) {
+    table.iksweb{margin-bottom: 20px; text-decoration: none;border-collapse:collapse;width:100%;text-align:center;}
+	table.iksweb th{font-weight:normal;font-size:11px; color:#ffffff;background-color:#a3cf98;}
+	table.iksweb td{font-size:10px;color:#354251;}
+	table.iksweb td,table.iksweb th{white-space:pre-wrap;padding:5px 10px;line-height:10px;vertical-align: middle;border: 1px solid rgb(211, 211, 211);;}	table.iksweb tr:hover{background-color:#f9fafb}
+  }

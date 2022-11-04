@@ -1,0 +1,14 @@
+.search-bar {
+    padding: 16px 36px;   
+    border: 2px solid rgb(240, 240, 240);
+    color: rgb(173, 173, 173);
+    border-radius: 10px;
+    padding-left: 10px;
+    transition: all 0.4s ease;;
+}
+
+.search-bar:focus {
+    outline-color: #A3CF98;
+}
+
+.search-bar::placeholder {color: rgb(173, 173, 173);}

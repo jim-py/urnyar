@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% block content_acdp %}{% endblock %}
+
+{% block content %}
+
+<section class="catalog" id="catalog">
+    <div class="container">
+        <div class="catalog-wrap">
+            <h2 class="catalog-title title">⋯ Каталог ⋯</h2>
+            <div class="catalog-split">
+
+                <div class="catalog-ul">
+                    <h3 class="cat__title">
+                        Урны
+                    </h3>
+                    <ul class="catalog-cat">
+                        {% for category in categories %}
+                        <li class="cat__item">
+                            <a class="cat__a" href="{% url 'category_urn' category.pk %}">{{ category.name }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <h3 class="cat__title">Лавки</h3>
+                    <ul class="catalog-cat">
+                        <li class="cat__item">
+                            <a class="cat__a" href="">Все</a>
+                        </li>
+                    </ul>
+                    <h3 class="cat__title">Ортопедические основания</h3>
+                    <ul class="catalog-cat">
+                        <li class="cat__item">
+                            <a class="cat__a" href="">Эконом</a>
+                        </li>
+                        <li class="cat__item">
+                            <a class="cat__a" href="">Стандарт</a>
+                        </li>
+                        <li class="cat__item">
+                            <a class="cat__a" href="">Усиленные</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="catalog-list">
+                    {% for category in categories %}
+                    <div class="catalog-item">
+                        <a href="{% url 'category_urn' category.pk %}" class="catalog-a">
+                            <div class="img-wrap">
+                                {% if item.main_photo %}
+                                <img class="catalog-img" src="{{ item.main_photo.url }}" alt="">
+                                {% else %}
+                                <img class="catalog-img" src="https://www.gidroabraziv.com/wp-content/uploads/2020/01/nophoto_1280x960_611.jpg" alt="">
+                                {% endif %}
+                            </div>
+                            <div class="catalog-about">
+                                <h4>{{ category.name }}</h4>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="about">
+        <div class="container">
+            <div class="about-wrap">
+                <h3 class="about-logo">Урны для мусора, уличные урны, урны пепельницы, урны металлические</h3>
+                <p class="typing-demo">Мы предлагаем Вам различные виды урн для мусора, как готовых, так и по Вашим
+                    эскизам. Урны проходят порошковую окраску и соответствуют санитарным нормам. Возможна покраска в
+                    любой цвет. Окраска выполняется по таблице RAL.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="pay">
+    <div class="pay">
+        <div class="container">
+            <div class="pay-wrap">
+                <h3 class="pay-title title">⋯ Оплата ⋯</h3>
+                <div class="pay-text">
+                    После выбора нужного для вас товара из ассортимента оставьте заявку на консультацию.
+                    Для этого заполните форму ниже и мы с вами свяжемся для уточнения деталей. Оплата осуществляется
+                    удобным для
+                    вас способом
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="send-form">
+        <div class="container">
+            <div class="form-wrapper" id="forma">
+                <form class="form" method="POST">
+                    {% csrf_token %}
+                    <h3 class="form-title">⋯ Получить бесплатную консультацию ⋯</h3>
+                    <div class="form-item">
+                        {{ form.name }}
+                        <label class="form-label" for="{{ form.name.id_for_label }}">Имя:</label>
+                        <input type="text" class="form-input form-input__name"
+                               placeholder="Введите имя...">
+                    </div>
+                    <div class="form-item">
+                        {{ form.surname }}
+                        <label class="form-label" for="{{ form.surname.id_for_label }}">Фамилия:</label>
+                        <input type="text" class="form-input form-input__last-name"
+                            placeholder="Введите фамилию...">
+                    </div>
+                    <div class="form-item">
+                        {{ form.telephone }}
+                        <label class="form-label" for="{{ form.telephone.id_for_label }}">Номер телефона:</label>
+                        <input type="text" class="form-input form-input__tel"
+                            placeholder="Введите номер телефона...">
+                    </div>
+                    <div class="form-item">
+                        {{ form.email }}
+                        <label class="form-label" for="{{ form.email.id_for_label }}">Номер телефона:</label>
+                        <input type="text" class="form-input form-input__mail"
+                            placeholder="Введите адресс почты...">
+                    </div>
+                    <div class="form-item">
+                        {{ form.comment }}
+                        <label class="form-label" for="{{ form.comment.id_for_label }}">Ваш комментарий:</label>
+                        <input type="text" class="form-input form-input__comment"
+                            placeholder="Введите ваш комментарий...">
+                    </div>
+
+                    <button class="form-btn" type="submit">
+                        ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ
+                    </button>
+                </form>
+                <img class="form-bg" src="/media/img/form-bg.jpg" alt="form-bg">
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="about">
+        <div class="container">
+            <div class="about-wrap">
+                <p class="typing-demo">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis cum facilis sit similique, molestias, nihil sequi laborum mollitia placeat deleniti suscipit dolorem impedit delectus, commodi beatae animi minima dolore fuga unde cupiditate! Culpa perspiciatis, sed iure minus repellat ut illo distinctio voluptas accusantium, omnis quam a porro quas, numquam in.</p>
+                <h3 class="about-logo">Лавки, ортопедические основания</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

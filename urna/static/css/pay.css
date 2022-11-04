@@ -1,0 +1,28 @@
+.about {
+
+}
+
+.pay-text {
+    margin: 0 auto;
+    text-align: center;
+    max-width: 40%;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 1199px) {
+    .pay-text {
+        max-width: 60%;    
+    }
+  }
+  
+@media (max-width: 768px) {
+
+  }
+    
+@media (max-width: 600px) {
+  
+  }
+  
+@media (max-width: 440px) {
+  
+  }
