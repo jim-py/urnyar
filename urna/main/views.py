@@ -20,8 +20,9 @@ def catalog(request):
                 return redirect('catalog')
     else:
         form = ContactForm()
-    categories = ItemTip.objects.all().order_by('name')
-    return render(request, 'main/catalog.html', {'form': form, 'categories': categories})
+    categories = Category.objects.all()
+    tips = ItemTip.objects.all().order_by('name')
+    return render(request, 'main/catalog.html', {'form': form, 'categories': tips, 'cat': categories})
 
 
 def about(request):

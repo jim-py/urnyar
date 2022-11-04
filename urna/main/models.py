@@ -59,11 +59,23 @@ class Item(models.Model):
 
 class ItemTip(models.Model):
     name = models.CharField(max_length=30, verbose_name='Название типа', blank=True)
+    category = models.ForeignKey('Category', verbose_name='Категория', on_delete=models.CASCADE, blank=True)
     photo = models.ImageField(upload_to='media/%Y-%m-%d/', blank=True, verbose_name='Фото категории')
 
     class Meta:
         verbose_name = 'Тип предмета'
-        verbose_name_plural = 'Типы предметов'
+        verbose_name_plural = 'Типы предмета'
+
+    def __str__(self):
+        return self.name
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=50, verbose_name='Название категории', blank=True)
+
+    class Meta:
+        verbose_name = 'Категория типа'
+        verbose_name_plural = 'Категории типа'
 
     def __str__(self):
         return self.name
