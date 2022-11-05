@@ -12,7 +12,7 @@ fake = Faker('ru-RU')
 
 tip = ItemTip.objects.values_list('id', flat=True).distinct()
 
-for _ in range(99):
+for _ in range(100):
     Item.objects.create(name=fake.sentence(nb_words=1),
                         cost=random.randint(2000, 5000),
                         tip=fake.random_element(ItemTip.objects.filter(id=fake.random_element(tip))),

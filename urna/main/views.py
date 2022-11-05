@@ -22,56 +22,57 @@ def catalog(request):
         form = ContactForm()
     categories = Category.objects.all()
     tips = ItemTip.objects.all().order_by('name')
-    return render(request, 'main/catalog.html', {'form': form, 'categories': tips, 'cat': categories})
+    return render(request, 'main/catalog.html', {'form': form, 'tips': tips, 'categories': categories})
 
 
 def about(request):
-    categories = ItemTip.objects.all().order_by('name')
-    return render(request, 'main/about.html', {'categories': categories})
+    categories = Category.objects.all()
+    tips = ItemTip.objects.all().order_by('name')
+    return render(request, 'main/about.html', {'tips': tips, 'categories': categories})
 
 
 def delivery(request):
-    categories = ItemTip.objects.all().order_by('name')
-    return render(request, 'main/delivery.html', {'categories': categories})
+    categories = Category.objects.all()
+    tips = ItemTip.objects.all().order_by('name')
+    return render(request, 'main/delivery.html', {'tips': tips, 'categories': categories})
 
 
 def pay(request):
-    categories = ItemTip.objects.all().order_by('name')
-    return render(request, 'main/pay.html', {'categories': categories})
+    categories = Category.objects.all()
+    tips = ItemTip.objects.all().order_by('name')
+    return render(request, 'main/pay.html', {'tips': tips, 'categories': categories})
 
 
 def contacts(request):
-    categories = ItemTip.objects.all().order_by('name')
-    return render(request, 'main/contacts.html', {'categories': categories})
-
-
-def category(request):
-    urn = Item.objects.all()
-    categories = ItemTip.objects.all().order_by('name')
-    return render(request, 'main/category.html', {'urn': urn, 'categories': categories})
+    categories = Category.objects.all()
+    tips = ItemTip.objects.all().order_by('name')
+    return render(request, 'main/contacts.html', {'tips': tips, 'categories': categories})
 
 
 def category_urn(request, pk):
     urn = Item.objects.filter(tip=pk).order_by('name')
     tip = ItemTip.objects.get(pk=pk).name
-    categories = ItemTip.objects.all().order_by('name')
-    return render(request, 'main/category.html', {'urn': urn, 'category': tip, 'categories': categories})
+    categories = Category.objects.all()
+    tips = ItemTip.objects.all().order_by('name')
+    return render(request, 'main/category.html', {'urn': urn, 'category': tip, 'categories': categories, 'tips': tips})
 
 
 def item(request, pk):
     urn = Item.objects.get(pk=pk)
-    categories = ItemTip.objects.all().order_by('name')
-    return render(request, 'main/item.html', {'urn': urn, 'categories': categories})
+    categories = Category.objects.all()
+    tips = ItemTip.objects.all().order_by('name')
+    return render(request, 'main/item.html', {'urn': urn, 'categories': categories, 'tips': tips})
 
 
 def search_urn(request):
-    categories = ItemTip.objects.all().order_by('name')
+    categories = Category.objects.all()
+    tips = ItemTip.objects.all().order_by('name')
     search = request.GET.get('search')
     if request.method == 'GET':
         if search == "":
             urn = Item.objects.all().order_by('name')
         else:
             urn = Item.objects.filter(name__contains=search).order_by('name')
-        return render(request, 'main/category.html', {'urn': urn, 'categories': categories})
+        return render(request, 'main/category.html', {'urn': urn, 'categories': categories, 'tips': tips})
     else:
-        return render(request, 'main/category.html', {'categories': categories})
+        return render(request, 'main/category.html', {'categories': categories, 'tips': tips})

@@ -11,37 +11,37 @@
             <div class="catalog-split">
 
                 <div class="catalog-ul">
-                    {% for item in cat %}
+                    {% for item in categories %}
                     <h3 class="cat__title">
                         {{ item.name }}
                     </h3>
                     <ul class="catalog-cat">
                         {% if item.name == 'Урны' %}
 
-                        {% for s in categories %}
-                            {% if s.category_id == 1 %}
+                        {% for category in tips %}
+                            {% if category.category_id == 1 %}
                                 <li class="cat__item">
-                                    <a class="cat__a" href="{% url 'category_urn' s.pk %}">{{ s.name }}</a>
+                                    <a class="cat__a" href="{% url 'category_urn' category.pk %}">{{ category.name }}</a>
                                 </li>
                             {% endif %}
                         {% endfor %}
 
                         {% elif item.name == 'Лавки' %}
 
-                        {% for s in categories %}
-                            {% if s.category_id == 2 %}
+                        {% for category in tips %}
+                            {% if category.category_id == 2 %}
                                 <li class="cat__item">
-                                    <a class="cat__a" href="{% url 'category_urn' s.pk %}">{{ s.name }}</a>
+                                    <a class="cat__a" href="{% url 'category_urn' category.pk %}">{{ category.name }}</a>
                                 </li>
                             {% endif %}
                         {% endfor %}
 
                         {% elif item.name == 'Ортопедические основания' %}
 
-                        {% for s in categories %}
-                            {% if s.category_id == 3 %}
+                        {% for category in tips %}
+                            {% if category.category_id == 3 %}
                                 <li class="cat__item">
-                                    <a class="cat__a" href="{% url 'category_urn' s.pk %}">{{ s.name }}</a>
+                                    <a class="cat__a" href="{% url 'category_urn' category.pk %}">{{ category.name }}</a>
                                 </li>
                             {% endif %}
                         {% endfor %}
@@ -53,18 +53,18 @@
                 </div>
 
                 <div class="catalog-list">
-                    {% for category in categories %}
+                    {% for tip in tips %}
                     <div class="catalog-item">
-                        <a href="{% url 'category_urn' category.pk %}" class="catalog-a">
+                        <a href="{% url 'category_urn' tip.pk %}" class="catalog-a">
                             <div class="img-wrap">
-                                {% if item.main_photo %}
+                                {% if tip.main_photo %}
                                 <img class="catalog-img" src="{{ item.main_photo.url }}" alt="">
                                 {% else %}
                                 <img class="catalog-img" src="https://www.gidroabraziv.com/wp-content/uploads/2020/01/nophoto_1280x960_611.jpg" alt="">
                                 {% endif %}
                             </div>
                             <div class="catalog-about">
-                                <h4>{{ category.name }}</h4>
+                                <h4>{{ tip.name }}</h4>
                             </div>
                         </a>
                     </div>

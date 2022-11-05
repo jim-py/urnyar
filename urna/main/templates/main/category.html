@@ -13,35 +13,47 @@
                 <h2 class="catalog-title title">⋯ Поиск ⋯</h2>
                 {% endif %}
                 <div class="catalog-split">
+
                     <div class="catalog-ul">
+                    {% for item in categories %}
                     <h3 class="cat__title">
-                        Урны
+                        {{ item.name }}
                     </h3>
                     <ul class="catalog-cat">
-                        {% for category in categories %}
-                        <li class="cat__item">
-                            <a class="cat__a" href="{% url 'category_urn' category.pk %}">{{ category.name }}</a>
-                        </li>
+                        {% if item.name == 'Урны' %}
+
+                        {% for category in tips %}
+                            {% if category.category_id == 1 %}
+                                <li class="cat__item">
+                                    <a class="cat__a" href="{% url 'category_urn' category.pk %}">{{ category.name }}</a>
+                                </li>
+                            {% endif %}
                         {% endfor %}
+
+                        {% elif item.name == 'Лавки' %}
+
+                        {% for category in tips %}
+                            {% if category.category_id == 2 %}
+                                <li class="cat__item">
+                                    <a class="cat__a" href="{% url 'category_urn' category.pk %}">{{ category.name }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% elif item.name == 'Ортопедические основания' %}
+
+                        {% for category in tips %}
+                            {% if category.category_id == 3 %}
+                                <li class="cat__item">
+                                    <a class="cat__a" href="{% url 'category_urn' category.pk %}">{{ category.name }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% endif %}
+
                     </ul>
-                    <h3 class="cat__title">Лавки</h3>
-                    <ul class="catalog-cat">
-                        <li class="cat__item">
-                            <a class="cat__a" href="">Все</a>
-                        </li>
-                    </ul>
-                    <h3 class="cat__title">Ортопедические основания</h3>
-                    <ul class="catalog-cat">
-                        <li class="cat__item">
-                            <a class="cat__a" href="">Эконом</a>
-                        </li>
-                        <li class="cat__item">
-                            <a class="cat__a" href="">Стандарт</a>
-                        </li>
-                        <li class="cat__item">
-                            <a class="cat__a" href="">Усиленные</a>
-                        </li>
-                    </ul>
+                    {% endfor %}
                 </div>
 
                     <div class="category-list">
@@ -65,6 +77,7 @@
                         </div>
                         {% endfor %}
                     </div>
+
                 </div>
             </div>
         </div>
