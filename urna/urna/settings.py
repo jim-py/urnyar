@@ -137,7 +137,7 @@ INTERNAL_IPS = ['127.0.0.1']
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '465'
-EMAIL_HOST_USER = 'kotik310702@gmail.com'  # Почта
-EMAIL_HOST_PASSWORD = 'kfjerboikhecywuz'  # Пароль приложения
+EMAIL_HOST_USER = '*@gmail.com'  # Почта
+EMAIL_HOST_PASSWORD = '*****'  # Пароль приложения
 EMAIL_USE_TSL = False
 EMAIL_USE_SSL = True
