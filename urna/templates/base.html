@@ -41,7 +41,11 @@
                 </div>
                 <div class="header-item header__item1">
                     <form class="search_form" method="GET" action="{% url 'search_urn' %}">
+                        {% if request.GET.search %}
+                        <input type="search" class="search-bar" name="search" placeholder="Поиск по сайту..." value="{{ request.GET.search }}">
+                        {% else %}
                         <input type="search" class="search-bar" name="search" placeholder="Поиск по сайту...">
+                        {% endif %}
                     </form>
                     <!-- <img src="./assets/img/search.svg" alt="search"> -->
                 </div>
