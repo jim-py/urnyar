@@ -14,44 +14,21 @@
                         {{ item.name }}
                     </h3>
                     <ul class="catalog-cat">
-                        {% if item.name == 'Урны' %}
 
                         {% for category in tips %}
-                            {% if category.category_id == 1 %}
+                            {% if category.category_id == item.pk %}
                                 <li class="cat__item">
-                                    <a class="cat__a" href="{% url 'category_urn' category.pk %}">{{ category.name }}</a>
+                                    <a class="cat__a" href="{% url 'category_urn' item.name category.pk %}">{{ category.name }}</a>
                                 </li>
                             {% endif %}
                         {% endfor %}
-
-                        {% elif item.name == 'Лавки' %}
-
-                        {% for category in tips %}
-                            {% if category.category_id == 2 %}
-                                <li class="cat__item">
-                                    <a class="cat__a" href="{% url 'category_urn' category.pk %}">{{ category.name }}</a>
-                                </li>
-                            {% endif %}
-                        {% endfor %}
-
-                        {% elif item.name == 'Ортопедические основания' %}
-
-                        {% for category in tips %}
-                            {% if category.category_id == 3 %}
-                                <li class="cat__item">
-                                    <a class="cat__a" href="{% url 'category_urn' category.pk %}">{{ category.name }}</a>
-                                </li>
-                            {% endif %}
-                        {% endfor %}
-
-                        {% endif %}
 
                     </ul>
                     {% endfor %}
                 </div>
 
                 <div class="tovar-wrap">
-                    <h3 class="tovar-title"> Урна кованная </h3>
+                    <h3 class="tovar-title"> {{ urn.name }} </h3>
                     <span class="tovar-line"></span>
                     <div class="tovar-item-split">
                         <div class="tovar-desc">
@@ -156,52 +133,80 @@
                         </div>
                         <div class="tovar-imgs">
                             <div class="main_img">
-                                <img src="{{ urn.photo_color1.url }}">
+                                {% if urn.main_photo %}
+                                <img class="catalog-img" src="{{ urn.main_photo.url }}" alt="">
+                                {% else %}
+                                <img class="catalog-img"
+                                     src="https://www.gidroabraziv.com/wp-content/uploads/2020/01/nophoto_1280x960_611.jpg"
+                                     alt="">
+                                {% endif %}
                             </div>
 
                             <div class="img_list">
-                                {% if item.main_photo %}
-                                <img class="catalog-img" src="{{ item.photo_color1.url }}" alt="">
+                                {% if urn.main_photo %}
+                                <img class="catalog-img" src="{{ urn.main_photo.url }}" alt="">
                                 {% else %}
                                 <img class="catalog-img"
                                      src="https://www.gidroabraziv.com/wp-content/uploads/2020/01/nophoto_1280x960_611.jpg"
                                      alt="">
                                 {% endif %}
-                                {% if item.main_photo %}
-                                <img class="catalog-img" src="{{ item.photo_color2.url }}" alt="">
+                                {% if urn.photo_color1 %}
+                                <img class="catalog-img" src="{{ urn.photo_color1.url }}" alt="">
                                 {% else %}
                                 <img class="catalog-img"
                                      src="https://www.gidroabraziv.com/wp-content/uploads/2020/01/nophoto_1280x960_611.jpg"
                                      alt="">
                                 {% endif %}
-                                {% if item.main_photo %}
-                                <img class="catalog-img" src="{{ item.photo_color3.url }}" alt="">
+                                {% if urn.photo_color2 %}
+                                <img class="catalog-img" src="{{ urn.photo_color2.url }}" alt="">
                                 {% else %}
                                 <img class="catalog-img"
                                      src="https://www.gidroabraziv.com/wp-content/uploads/2020/01/nophoto_1280x960_611.jpg"
                                      alt="">
                                 {% endif %}
-                                {% if item.main_photo %}
-                                <img class="catalog-img" src="{{ item.photo_color4.url }}" alt="">
+                                {% if urn.photo_color3 %}
+                                <img class="catalog-img" src="{{ urn.photo_color3.url }}" alt="">
                                 {% else %}
                                 <img class="catalog-img"
                                      src="https://www.gidroabraziv.com/wp-content/uploads/2020/01/nophoto_1280x960_611.jpg"
                                      alt="">
                                 {% endif %}
-                                {% if item.main_photo %}
-                                <img class="catalog-img" src="{{ item.photo_color5.url }}" alt="">
+                                {% if urn.photo_color4 %}
+                                <img class="catalog-img" src="{{ urn.photo_color4.url }}" alt="">
                                 {% else %}
                                 <img class="catalog-img"
                                      src="https://www.gidroabraziv.com/wp-content/uploads/2020/01/nophoto_1280x960_611.jpg"
                                      alt="">
                                 {% endif %}
-                                {% if item.main_photo %}
-                                <img class="catalog-img" src="{{ item.photo_color6.url }}" alt="">
+                                {% if urn.photo_color5 %}
+                                <img class="catalog-img" src="{{ urn.photo_color5.url }}" alt="">
                                 {% else %}
                                 <img class="catalog-img"
                                      src="https://www.gidroabraziv.com/wp-content/uploads/2020/01/nophoto_1280x960_611.jpg"
                                      alt="">
                                 {% endif %}
+                                {% if urn.photo_color6 %}
+                                <img class="catalog-img" src="{{ urn.photo_color6.url }}" alt="">
+                                {% else %}
+                                <img class="catalog-img"
+                                     src="https://www.gidroabraziv.com/wp-content/uploads/2020/01/nophoto_1280x960_611.jpg"
+                                     alt="">
+                                {% endif %}
+                                {% if urn.photo_color7 %}
+                                <img class="catalog-img" src="{{ urn.photo_color7.url }}" alt="">
+                                {% else %}
+                                <img class="catalog-img"
+                                     src="https://www.gidroabraziv.com/wp-content/uploads/2020/01/nophoto_1280x960_611.jpg"
+                                     alt="">
+                                {% endif %}
+                                {% if urn.photo_color8 %}
+                                <img class="catalog-img" src="{{ urn.photo_color8.url }}" alt="">
+                                {% else %}
+                                <img class="catalog-img"
+                                     src="https://www.gidroabraziv.com/wp-content/uploads/2020/01/nophoto_1280x960_611.jpg"
+                                     alt="">
+                                {% endif %}
+
                             </div>
                             <p>Цвет фотографии искажает монитор компьютера. Уточните цвет у менеджера или ориентируйтесь
                                 по таблице RAL</p>

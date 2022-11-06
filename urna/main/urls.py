@@ -3,8 +3,9 @@ from .views import *
 
 urlpatterns = [
 
-    path('category/<int:pk>', category_urn, name='category_urn'),
-    path('item/<int:pk>', item, name='item'),
+    path('', catalog, name='category_urn'),
+    path('<str:category_name>/<int:pk>', category_urn, name='category_urn'),
+    path('<str:category_name>/<int:id>/item/<int:pk>', item, name='item'),
     path('search/', search_urn, name='search_urn'),
 
 

@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from .models import *
 from django.core.mail import send_mail
 from .forms import *
+from itertools import chain
+from operator import attrgetter
 
 
 def catalog(request):
@@ -49,19 +51,40 @@ def contacts(request):
     return render(request, 'main/contacts.html', {'tips': tips, 'categories': categories})
 
 
-def category_urn(request, pk):
-    urn = Item.objects.filter(tip=pk).order_by('name')
+def category_urn(request, category_name, pk):
+    urn = list(sorted(chain(Urna.objects.filter(tip=pk).order_by('name'),
+                            UrnaMetal.objects.filter(tip=pk).order_by('name'),
+                            Bench.objects.filter(tip=pk).order_by('name'),
+                            Bases.objects.filter(tip=pk).order_by('name')),
+                      key=attrgetter('name')))
     tip = ItemTip.objects.get(pk=pk).name
     categories = Category.objects.all()
     tips = ItemTip.objects.all().order_by('name')
-    return render(request, 'main/category.html', {'urn': urn, 'category': tip, 'categories': categories, 'tips': tips})
+    return render(request, 'main/category.html',
+                  {'urn': urn, 'category': tip, 'categories': categories, 'tips': tips, 'category_name': category_name,
+                   'pk': pk})
 
 
-def item(request, pk):
-    urn = Item.objects.get(pk=pk)
+def item(request, pk, id, category_name):
     categories = Category.objects.all()
     tips = ItemTip.objects.all().order_by('name')
-    return render(request, 'main/item.html', {'urn': urn, 'categories': categories, 'tips': tips})
+    if category_name == 'Урны':
+        if str(ItemTip.objects.get(pk=id).name) == 'Металлические':
+            urn = UrnaMetal.objects.get(pk=pk)
+            return render(request, 'main/item2urn.html',
+                          {'urn': urn, 'categories': categories, 'tips': tips, 'name': urn.name})
+        else:
+            urn = Urna.objects.get(pk=pk)
+            return render(request, 'main/item.html',
+                          {'urn': urn, 'categories': categories, 'tips': tips, 'name': urn.name})
+    elif category_name == 'Лавки':
+        urn = Bench.objects.get(pk=pk)
+        return render(request, 'main/tovar-lavka.html',
+                      {'urn': urn, 'categories': categories, 'tips': tips, 'name': urn.name})
+    elif category_name == 'Ортопедические основания':
+        urn = Bases.objects.get(pk=pk)
+        return render(request, 'main/tovar-osn.html',
+                      {'urn': urn, 'categories': categories, 'tips': tips, 'name': urn.name})
 
 
 def search_urn(request):
@@ -70,9 +93,17 @@ def search_urn(request):
     search = request.GET.get('search')
     if request.method == 'GET':
         if search == "":
-            urn = Item.objects.all().order_by('name')
+            urn = list(sorted(chain(Urna.objects.all().order_by('name'),
+                                    UrnaMetal.objects.all().order_by('name'),
+                                    Bench.objects.all().order_by('name'),
+                                    Bases.objects.all().order_by('name')),
+                              key=attrgetter('name')))
         else:
-            urn = Item.objects.filter(name__contains=search).order_by('name')
-        return render(request, 'main/category.html', {'urn': urn, 'categories': categories, 'tips': tips})
+            urn = list(sorted(chain(Urna.objects.filter(name__contains=search).order_by('name'),
+                                    UrnaMetal.objects.filter(name__contains=search).order_by('name'),
+                                    Bench.objects.filter(name__contains=search).order_by('name'),
+                                    Bases.objects.filter(name__contains=search).order_by('name')),
+                              key=attrgetter('name')))
+        return render(request, 'main/search.html', {'urn': urn, 'categories': categories, 'tips': tips})
     else:
-        return render(request, 'main/category.html', {'categories': categories, 'tips': tips})
+        return render(request, 'main/search.html', {'categories': categories, 'tips': tips})

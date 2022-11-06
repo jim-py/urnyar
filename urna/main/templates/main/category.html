@@ -20,37 +20,14 @@
                         {{ item.name }}
                     </h3>
                     <ul class="catalog-cat">
-                        {% if item.name == 'Урны' %}
 
                         {% for category in tips %}
-                            {% if category.category_id == 1 %}
+                            {% if category.category_id == item.pk %}
                                 <li class="cat__item">
-                                    <a class="cat__a" href="{% url 'category_urn' category.pk %}">{{ category.name }}</a>
+                                    <a class="cat__a" href="{% url 'category_urn' item.name category.pk %}">{{ category.name }}</a>
                                 </li>
                             {% endif %}
                         {% endfor %}
-
-                        {% elif item.name == 'Лавки' %}
-
-                        {% for category in tips %}
-                            {% if category.category_id == 2 %}
-                                <li class="cat__item">
-                                    <a class="cat__a" href="{% url 'category_urn' category.pk %}">{{ category.name }}</a>
-                                </li>
-                            {% endif %}
-                        {% endfor %}
-
-                        {% elif item.name == 'Ортопедические основания' %}
-
-                        {% for category in tips %}
-                            {% if category.category_id == 3 %}
-                                <li class="cat__item">
-                                    <a class="cat__a" href="{% url 'category_urn' category.pk %}">{{ category.name }}</a>
-                                </li>
-                            {% endif %}
-                        {% endfor %}
-
-                        {% endif %}
 
                     </ul>
                     {% endfor %}
@@ -59,7 +36,7 @@
                     <div class="category-list">
                         {% for item in urn %}
                         <div class="category-item">
-                            <a href="{% url 'item' item.pk %}" class="catalog-a">
+                            <a href="{% url 'item' category_name pk item.pk %}" class="catalog-a">
                                 <div class="img-wrap">
                                     {% if item.main_photo %}
                                     <img class="catalog-img" src="{{ item.main_photo.url }}" alt="">
