@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content_acdp %}{% endblock %}
+
+{% block content %}
+
+<section class="catalog" id="catalog">
+        <div class="container">
+            <div class="catalog-wrap">
+                {% if category %}
+                <h2 class="catalog-title title">⋯ {{ category }} ⋯</h2>
+                {% else %}
+                <h2 class="catalog-title title">⋯ Поиск ⋯</h2>
+                {% endif %}
+                <div class="catalog-split">
+
+                    <div class="catalog-ul">
+                    {% for item in categories %}
+                    <h3 class="cat__title">
+                        {{ item.name }}
+                    </h3>
+                    <ul class="catalog-cat">
+
+                        {% for category in tips %}
+                            {% if category.category_id == item.pk %}
+                                <li class="cat__item">
+                                    <a class="cat__a" href="{% url 'category_urn' item.name category.pk %}">{{ category.name }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+
+                    </ul>
+                    {% endfor %}
+                </div>
+
+                    <div class="category-list">
+                        {% for item in urn %}
+                        <div class="category-item">
+                            <a href="{% url 'item' item.tip.category item.tip.pk item.pk %}" class="catalog-a">
+                                <div class="img-wrap">
+                                    {% if item.main_photo %}
+                                    <img class="catalog-img" src="{{ item.main_photo.url }}" alt="">
+                                    {% else %}
+                                    <img class="catalog-img" src="https://www.gidroabraziv.com/wp-content/uploads/2020/01/nophoto_1280x960_611.jpg" alt="">
+                                    {% endif %}
+                                </div>
+                                <div class="catalog-about">
+                                    <h4>{{ item.name }}</h4>
+                                    <div class="cat-price">
+                                        {{ item.cost }} р.
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
