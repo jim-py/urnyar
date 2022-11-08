@@ -53,7 +53,7 @@ class Urna(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = 'Урна'
+        verbose_name = 'Урну'
         verbose_name_plural = 'Урны'
 
 
@@ -118,8 +118,8 @@ class UrnaMetal(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = 'Урна металл'
-        verbose_name_plural = 'Урны металл'
+        verbose_name = 'Металлическую урну'
+        verbose_name_plural = 'Металлические урны'
 
 
 class Bench(models.Model):
@@ -157,7 +157,7 @@ class Bench(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = 'Лавка'
+        verbose_name = 'Лавку'
         verbose_name_plural = 'Лавки'
 
 
@@ -226,8 +226,8 @@ class Category(models.Model):
     name = models.CharField(max_length=50, verbose_name='Название категории', blank=True)
 
     class Meta:
-        verbose_name = 'Категория типа'
-        verbose_name_plural = 'Категории типа'
+        verbose_name = 'Категорию'
+        verbose_name_plural = 'Категории'
 
     def __str__(self):
         return self.name

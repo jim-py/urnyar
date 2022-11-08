@@ -17,6 +17,7 @@ for _ in range(1):
     ItemTip.objects.create(name='Перфорация', category=fake.random_element(Category.objects.filter(name='Урны')))
     ItemTip.objects.create(name='Кованые', category=fake.random_element(Category.objects.filter(name='Урны')))
     ItemTip.objects.create(name='Металлические', category=fake.random_element(Category.objects.filter(name='Урны')))
+    ItemTip.objects.create(name='Металлические с одной таблицей', category=fake.random_element(Category.objects.filter(name='Урны')))
     ItemTip.objects.create(name='Для раздельного мусора',
                            category=fake.random_element(Category.objects.filter(name='Урны')))
     ItemTip.objects.create(name='Деревянные', category=fake.random_element(Category.objects.filter(name='Урны')))
@@ -32,6 +33,52 @@ for _ in range(1):
                            category=fake.random_element(Category.objects.filter(name='Ортопедические основания')))
 
 for _ in range(10):
+    Urna.objects.create(name=fake.sentence(nb_words=1),
+                        cost=random.randint(2000, 5000),
+                        tip=ItemTip.objects.get(name='Металлические с одной таблицей'),
+
+                        # volume1=random.randint(2000, 5000),
+                        # volume2=random.randint(2000, 5000),
+                        # volume3=random.randint(2000, 5000),
+                        # material1=fake.sentence(nb_words=1),
+                        # material2=fake.sentence(nb_words=1),
+                        # material3=fake.sentence(nb_words=1),
+                        # size1=random.randint(2000, 5000),
+                        # size2=random.randint(2000, 5000),
+                        # size3=random.randint(2000, 5000),
+                        # weight1=random.randint(2000, 5000),
+                        # weight2=random.randint(2000, 5000),
+                        # weight3=random.randint(2000, 5000),
+                        # box1=fake.sentence(nb_words=1),
+                        # box2=fake.sentence(nb_words=1),
+                        # box3=fake.sentence(nb_words=1),
+                        #
+                        # cost1_1=random.randint(2000, 5000),
+                        # cost1_2=random.randint(2000, 5000),
+                        # cost1_3=random.randint(2000, 5000),
+                        # cost100_1=random.randint(2000, 5000),
+                        # cost100_2=random.randint(2000, 5000),
+                        # cost100_3=random.randint(2000, 5000),
+                        # cost200_1=random.randint(2000, 5000),
+                        # cost200_2=random.randint(2000, 5000),
+                        # cost200_3=random.randint(2000, 5000),
+                        #
+                        # material_text=fake.sentence(nb_words=10),
+                        # color_text=fake.sentence(nb_words=10),
+                        # cover_text=fake.sentence(nb_words=10),
+                        # box_type_text=fake.sentence(nb_words=10),
+                        # tray_text=fake.sentence(nb_words=10),
+                        # extra_text=fake.sentence(nb_words=10),
+
+                        main_photo='media/2022-11-02/360_urna-tallin.jpeg',
+                        photo_color1='media/2022-11-02/1.jpg',
+                        photo_color2='media/2022-11-02/2.jpg',
+                        photo_color3='media/2022-11-02/3.jpg',
+                        photo_color4='media/2022-11-02/4.jpg',
+                        photo_color5='media/2022-11-02/5.jpg',
+                        photo_color6='media/2022-11-02/m.jpg',
+                        photo_color7='media/2022-11-02/111.jpg',
+                        photo_color8='media/2022-11-02/art.jpg', )
     Urna.objects.create(name=fake.sentence(nb_words=1),
                              cost=random.randint(2000, 5000),
                              tip=ItemTip.objects.get(name='Кованые'),
