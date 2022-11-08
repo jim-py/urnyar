@@ -17,7 +17,7 @@ def catalog(request):
             comment = form.cleaned_data['comment']
             name = f'{name} {surname}'
             data = f'Телефон: {telephone}    Почта: {email}    Комментарий: {comment}'
-            mail = send_mail(name, data, 'from@gmail.com', ['to@gmail.com'])
+            mail = send_mail(name, data, '*@gmail.com', ['*@gmail.com'])
             if mail:
                 return redirect('catalog')
     else:

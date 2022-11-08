@@ -88,34 +88,24 @@
                     {% csrf_token %}
                     <h3 class="form-title">⋯ Получить бесплатную консультацию ⋯</h3>
                     <div class="form-item">
-                        {{ form.name }}
                         <label class="form-label" for="{{ form.name.id_for_label }}">Имя:</label>
-                        <input type="text" class="form-input form-input__name"
-                               placeholder="Введите имя...">
+                        {{ form.name }}
                     </div>
                     <div class="form-item">
-                        {{ form.surname }}
                         <label class="form-label" for="{{ form.surname.id_for_label }}">Фамилия:</label>
-                        <input type="text" class="form-input form-input__last-name"
-                            placeholder="Введите фамилию...">
+                        {{ form.surname }}
                     </div>
                     <div class="form-item">
-                        {{ form.telephone }}
                         <label class="form-label" for="{{ form.telephone.id_for_label }}">Номер телефона:</label>
-                        <input type="text" class="form-input form-input__tel"
-                            placeholder="Введите номер телефона...">
+                        {{ form.telephone }}
                     </div>
                     <div class="form-item">
+                        <label class="form-label" for="{{ form.email.id_for_label }}">Почта:</label>
                         {{ form.email }}
-                        <label class="form-label" for="{{ form.email.id_for_label }}">Номер телефона:</label>
-                        <input type="text" class="form-input form-input__mail"
-                            placeholder="Введите адресс почты...">
                     </div>
                     <div class="form-item">
-                        {{ form.comment }}
                         <label class="form-label" for="{{ form.comment.id_for_label }}">Ваш комментарий:</label>
-                        <input type="text" class="form-input form-input__comment"
-                            placeholder="Введите ваш комментарий...">
+                        {{ form.comment }}
                     </div>
 
                     <button class="form-btn" type="submit">
